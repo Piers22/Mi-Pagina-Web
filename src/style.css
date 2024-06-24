@@ -1,0 +1,161 @@
+/* General */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Header */
+header {
+  width: 100%;
+  background-color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  margin-right: 20px;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #ffffff;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.profile-image {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.User-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Single */
+.single{
+  background-color: #222;
+  padding: 1em;
+  width: 300px;
+  flex-shrink: 0;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+  border-radius: 8px; /* Redondear bordes */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Añadir sombra */
+  margin-left: -5px;
+}
+
+.icons-header {
+  background-color: #333;
+  padding: 1em;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1em;
+}
+
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.icon-container i {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+.messages-list {
+  margin-top: 1em;
+  background-color: #fff; /* Fondo blanco para mensajes */
+  color: #000; /* Texto negro para mensajes */
+  border-radius: 0 0 8px 8px;
+  padding: 1em;
+}
+
+.message-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.message-avatar {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 1em;
+}
+
+.message-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-name {
+  font-weight: bold;
+}
+
+.message-preview {
+  color: gray;
+}
+
+.blocked-accounts {
+  margin-top: 1em;
+  color: gray;
+}
