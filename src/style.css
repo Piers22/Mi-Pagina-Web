@@ -10,6 +10,9 @@ body, html {
   padding: 0;
   width: 100%;
   height: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  overflow-x: hidden; /* Evita el desbordamiento horizontal */
 }
 
 /* Header */
@@ -18,6 +21,7 @@ header {
   background-color: #000000;
   margin: 0;
   padding: 0;
+  border: 1px solid #ffffff;
 }
 
 .header-content {
@@ -86,7 +90,7 @@ nav a:hover {
 }
 
 /* Single */
-.single{
+.single {
   background-color: #222;
   padding: 1em;
   width: 300px;
@@ -94,10 +98,10 @@ nav a:hover {
   color: white;
   display: flex;
   flex-direction: column;
-  min-height: 90vh;
+  min-height: calc(95vh - 85px);
   border-radius: 8px; /* Redondear bordes */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Añadir sombra */
-  margin-left: -5px;
+  margin-left: -30px;
 }
 
 .icons-header {
@@ -127,6 +131,7 @@ nav a:hover {
   color: #000; /* Texto negro para mensajes */
   border-radius: 0 0 8px 8px;
   padding: 1em;
+  flex-grow: 1;
 }
 
 .message-item {
@@ -158,4 +163,86 @@ nav a:hover {
 .blocked-accounts {
   margin-top: 1em;
   color: gray;
+}
+
+/* Main */
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.image-container {
+  position: relative;
+  flex: 1 1 20%; /* Ajusta el tamaño de los contenedores según sea necesario */
+  margin: 10px;
+  overflow: hidden; /* Asegura que el contenido extra se oculte */
+  border-radius: 10px; /* Aplica el mismo radio de borde a todo el contenedor */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.image-container img {
+  width: 70%; /* Ajusta el tamaño de la imagen */
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  transition: opacity 0.3s ease;
+}
+
+.image-container:hover .image-overlay {
+  opacity: 1;
+}
+
+.image-details {
+  color: #fff;
+  text-align: center;
+}
+
+.image-details h3, .image-details p {
+  margin: 0;
+}
+
+.image-icons {
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(40, 40, 40, 0.551); /* Fondo semi-transparente */
+  padding: 5px 10px; 
+  display: flex;
+  justify-content: center; /* Centra los íconos horizontalmente */
+  border-radius: 10px;
+}
+
+.image-icons i {
+  color: #fff;
+  margin: 0 15px;
+  font-size: 1.5em;
+  cursor: pointer; 
+
+}
+
+/* Content */
+.content {
+  display: flex;
+  flex-wrap: nowrap; /* Evita que los elementos se envuelvan a la siguiente línea */
+  padding: 20px;
 }

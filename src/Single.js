@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css'; 
 import Constantino from './imagenes/9.png';
-import Luis from './imagenes/10.jpg';
+import Luis from './imagenes/1.png';
 import Miguel from './imagenes/11.jpg';
 
 const Single = () => {
