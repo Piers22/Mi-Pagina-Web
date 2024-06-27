@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import './style.css'; 
 import image1 from './imagenes/10.jpg'; 
 import image2 from './imagenes/2.png';
@@ -15,8 +15,9 @@ import image12 from './imagenes/14.png';
 import image13 from './imagenes/15.png'; 
 import image14 from './imagenes/16.png'; 
 import image15 from './imagenes/17.png'; 
+import Chat from './Chat'; // Importa el nuevo componente Chat
+import Informacion from './Informacion'; // Asegúrate de importar este componente
 
-// Lista de imágenes adicionales para cambiar
 const additionalImages = [
   { src: image1, name: 'Luis Zambrano', age: '35 años' },
   { src: image2, name: 'Santiago Pacherres', age: '30 años' },
@@ -35,7 +36,7 @@ const additionalImages = [
   { src: image15, name: 'Samil Grado', age: '34 años' },
 ];
 
-const Main = () => {
+const Main = forwardRef((props, ref) => {
   const initialImages = [
     { src: image1, name: 'Luis Zambrano', age: '35 años' },
     { src: image2, name: 'Santiago Pacherres', age: '30 años' },
@@ -48,6 +49,8 @@ const Main = () => {
   ];
 
   const [images, setImages] = useState(initialImages);
+  const [selectedPerson, setSelectedPerson] = useState(null);
+  const [showChat, setShowChat] = useState(false);
 
   const getRandomImage = () => {
     const randomIndex = Math.floor(Math.random() * additionalImages.length);
@@ -60,19 +63,56 @@ const Main = () => {
     setImages(newImages);
   };
 
+  const handleImageClick = (person) => {
+    setSelectedPerson(person);
+  };
+
+  const handleChatClick = (person) => {
+    setSelectedPerson(person);
+    setShowChat(true);
+  };
+
+  const handleBackClick = () => {
+    setSelectedPerson(null);
+    setShowChat(false);
+  };
+
+  const handleRefreshClick = () => {
+    const newImages = [];
+    while (newImages.length < initialImages.length) {
+      const randomImage = getRandomImage();
+      if (!newImages.some(image => image.src === randomImage.src)) {
+        newImages.push(randomImage);
+      }
+    }
+    setImages(newImages);
+  };
+
+  React.useImperativeHandle(ref, () => ({
+    handleRefreshClick,
+  }));
+
+  if (selectedPerson) {
+    if (showChat) {
+      return <Chat person={selectedPerson} onBackClick={handleBackClick} />;
+    } else {
+      return <Informacion person={selectedPerson} onBackClick={handleBackClick} />;
+    }
+  }
+
   return (
     <div className="main-content">
       {images.map((image, index) => (
         <div className="image-container" key={index}>
-          <img src={image.src} alt={`Image ${index + 1}`} />
-          <div className="image-overlay">
+          <img src={image.src} alt={`Image ${index + 1}`} onClick={() => handleImageClick(image)} />
+          <div className="image-overlay" onClick={() => handleImageClick(image)}>
             <div className="image-details">
               <h3>{image.name}</h3>
               <p>{image.age}</p>
             </div>
           </div>
           <div className="image-icons">
-            <i className="fas fa-comments"></i>
+            <i className="fas fa-comments" onClick={() => handleChatClick(image)}></i>
             <i className="fas fa-kiss-wink-heart" onClick={() => handleKissClick(index)}></i>
             <i className="fas fa-star"></i>
           </div>
@@ -80,6 +120,6 @@ const Main = () => {
       ))}
     </div>
   );
-};
+});
 
 export default Main;
